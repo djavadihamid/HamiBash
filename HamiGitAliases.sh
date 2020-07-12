@@ -9,6 +9,13 @@ gc(){
         git commit -m "$1";
 }
 
+pushAll(){
+	git push origin1 master;
+	git push origin2 master;
+	git push origin3 master;
+	git push origin4 master;
+}
+
 ss(){
         git status;
 }
