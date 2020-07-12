@@ -10,6 +10,7 @@ gc(){
 }
 
 pushAll(){
+	git push origin master;
 	git push origin1 master;
 	git push origin2 master;
 	git push origin3 master;
