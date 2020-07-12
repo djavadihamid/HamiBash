@@ -10,11 +10,17 @@ gc(){
 }
 
 pushAll(){
-	git push origin master;
-	git push origin1 master;
-	git push origin2 master;
-	git push origin3 master;
-	git push origin4 master;
+	remotes=( $(git remote -v) )
+	remotes=($(echo "${remotes[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+	for i in "${remotes[@]}"
+	do
+		if [[ "$i" == *"https"* || "$i" == *"http"* || "$i" == *"git@"* ]]
+			then
+				echo -e "\n=========================\n=========================\n========================="
+				echo "$i"
+				git push "$i" master
+		fi
+	done
 }
 
 ss(){
