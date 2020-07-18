@@ -57,3 +57,7 @@ cb(){
 br(){
 	git branch;
 }
+
+upSuMo(){
+        git submodule update --remote;
+}
