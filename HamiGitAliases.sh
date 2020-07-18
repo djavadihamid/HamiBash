@@ -9,6 +9,20 @@ gc(){
         git commit -m "$1";
 }
 
+pushAll(){
+	remotes=( $(git remote -v) )
+	remotes=($(echo "${remotes[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+	for i in "${remotes[@]}"
+	do
+		if [[ "$i" == *"https"* || "$i" == *"http"* || "$i" == *"git@"* ]]
+			then
+				echo -e "\n=========================\n=========================\n========================="
+				echo "$i"
+				git push "$i" master
+		fi
+	done
+}
+
 ss(){
         git status;
 }
