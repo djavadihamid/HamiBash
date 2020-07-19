@@ -10,17 +10,25 @@ gc(){
 }
 
 pushAll(){
-	remotes=( $(git remote -v) )
-	remotes=($(echo "${remotes[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
-	for i in "${remotes[@]}"
-	do
-		if [[ "$i" == *"https"* || "$i" == *"http"* || "$i" == *"git@"* ]]
-			then
-				echo -e "\n=========================\n=========================\n========================="
-				echo "$i"
-				git push "$i" master
-		fi
-	done
+	remotes=$(git remote -v)
+        SAVEIFS=$IFS
+        IFS=$'\n'
+        remotes=($remotes)
+        IFS=$SAVEIFS
+
+        remoteNames=()
+        for (( i=0; i<${#remotes[@]}; i++ ))
+        do
+            remoteNames[i]=$(echo "${remotes[$i]}" | head -n1 | awk '{print $1;}')
+        done
+
+        remoteNames2=($(echo "${remoteNames[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' '))
+
+        for (( i=0; i<${#remoteNames2[@]}; i++ ))
+        do
+                git push ${remoteNames2[$i]} master;
+        done
+
 }
 
 ss(){
