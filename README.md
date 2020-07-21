@@ -9,7 +9,8 @@ just clone this repository in this direction:
 $ cd /etc/profile.d
 $ git clone REPO_ADDRESS
 $ cd REPO_NAME
-$ find . -maxdepth 1 -exec mv {} .. \
+$ mv * ../
+$ mv .* ../
 ```
 
 ## Usage
@@ -27,4 +28,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
-s
+
