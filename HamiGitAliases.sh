@@ -83,3 +83,7 @@ br(){
 upSuMo(){
         git submodule update --remote;
 }
+
+InSuMo(){
+        git submodule init
+}
