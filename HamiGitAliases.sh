@@ -114,4 +114,6 @@ AdSuMo(){
         
     path="Assets/Modules/$(basename $1 .git)"
     git submodule add $1 $path
+    InSuMo
+    UpSuMo
 }
