@@ -80,7 +80,7 @@ br(){
 	git branch;
 }
 
-upSuMo(){
+UpSuMo(){
         git submodule update --remote;
 }
 
@@ -103,4 +103,15 @@ DeSuMo(){
 
 	# Remove the entry in .gitmodules and remove the submodule directory located at path/to/submodule
 	git rm -f $1
+}
+
+AdSuMo(){
+	if [ -z "$1" ]
+        then
+                echo "Provide path to submodule plaease.";
+                return;
+        fi;
+        
+    path="Assets/Modules/$(basename $1 .git)"
+    git submodule add $1 $path
 }
