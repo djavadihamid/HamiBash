@@ -9,6 +9,17 @@ gc(){
         git commit -m "$1";
 }
 
+gcp(){
+        if [ -z "$1" ]
+        then
+                echo "Provide msg buddy";
+                return;
+        fi;
+
+        gc $1
+        pushAll
+}
+
 pushAll(){
 	remotes=$(git remote -v)
         SAVEIFS=$IFS
