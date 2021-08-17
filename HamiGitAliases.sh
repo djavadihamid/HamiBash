@@ -42,8 +42,12 @@ pushAll(){
 
 }
 
+
+
+
+
 ss(){
-        git status;
+	    git -c color.status=always status | less -r
 }
 
 lol(){
